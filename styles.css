@@ -1,20 +1,105 @@
+/*
+* {
+  margin: 0;
+  padding: 0;
+}
+*/
 body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: teal;
+  background-color: rgb(95, 172, 172);
+}
+#test-wrapper {
+  height: 201px;
+  width: 200px;
+  background-color: yellow;
+}
+#test1 {
+  height: 100px;
+  width: 200px;
+  background-color: white;
+}
+#test2 {
+  height: 100px;
+  width: 200px;
+  background-color: black;
+  box-sizing: border-box;
+}
+#editor-wrapper {
+  height: 221px;
+  background-color: yellow;
+  /*border: 2px solid black;
+  box-shadow: -5px -5px 10px rgba(0, 0, 0, 0.3), 5px 5px 10px rgba(0, 0, 0, 0.3);*/
+}
+#editor-bar {
+  display: flex;
+  padding: 0;
+  height: 20px;
+  width: 500px;
+  background-color: rgb(0, 144, 144);
+  /*border-top: 2px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;*/
 }
 #editor {
+  resize: vertical;
   height: 200px;
   width: 500px;
+  background-color: rgb(155, 190, 190);
+  box-sizing: border-box;
+}
+@media (max-width: 650px) {
+  #editor-wrapper {
+    width: 80%;
+  }
+  #editor {
+    width: 100%;
+  }
+}
+#preview {
+  min-height: 200px;
+  width: 800px;
+  margin-top: 25px;
+  background-color: rgb(155, 190, 190);
+  padding: 10px;
   border: 2px solid black;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3), -5px -5px 10px rgba(0, 0, 0, 0.3);
 }
-#preview {
-  width: 600px;
-  margin-top: 25px;
-  background-color: blanchedalmond;
-  padding: 20px;
-  border: 2px solid black;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3), -5px -5px 10px rgba(0, 0, 0, 0.3);
+#preview img {
+  max-width: 100%;
+  height: auto;
+}
+@media (max-width: 850px) {
+  #preview {
+    width: 90%;
+  }
+}
+
+#preview h1 {
+  border-bottom: 2px solid rgb(38, 70, 70);
+}
+#preview h2 {
+  border-bottom: 1px solid rgb(38, 70, 70);
+}
+code {
+  background-color: white;
+}
+pre code {
+  display: block;
+}
+table {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+td {
+  border: 1px solid black;
+}
+th {
+  border: 1px solid black;
+}
+blockquote {
+  padding-left: 5px;
+  border-left: 3px solid rgb(34, 61, 61);
+  color: rgb(34, 61, 61);
 }
