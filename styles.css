@@ -1,104 +1,146 @@
-/*
-* {
-  margin: 0;
-  padding: 0;
-}
-*/
 body {
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: rgb(95, 172, 172);
 }
-#test-wrapper {
-  height: 201px;
-  width: 200px;
-  background-color: yellow;
-}
-#test1 {
-  height: 100px;
-  width: 200px;
-  background-color: white;
-}
-#test2 {
-  height: 100px;
-  width: 200px;
-  background-color: black;
-  box-sizing: border-box;
-}
+
+/*Editor*/
 #editor-wrapper {
-  height: 221px;
   background-color: yellow;
-  /*border: 2px solid black;
-  box-shadow: -5px -5px 10px rgba(0, 0, 0, 0.3), 5px 5px 10px rgba(0, 0, 0, 0.3);*/
+}
+#editor-wrapper.expand {
+  position: absolute;
 }
 #editor-bar {
   display: flex;
-  padding: 0;
+  justify-content: space-between;
   height: 20px;
   width: 500px;
   background-color: rgb(0, 144, 144);
-  /*border-top: 2px solid black;
+  font-weight: bold;
+  box-sizing: border-box;
+  border-top: 2px solid black;
   border-left: 2px solid black;
-  border-right: 2px solid black;*/
+  border-right: 2px solid black;
+  box-shadow: -5px -5px 10px rgba(0, 0, 0, 0.3), 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+#editor-resize {
+  cursor: pointer;
+}
+#editor-resize:hover {
+  color: white;
 }
 #editor {
+  display: flex; /*This is a fix for Chrome which adds a 5px space below textarea elements. display: block; would work as well*/
+  /*vertical-align: middle; /*This is another fix for Chrome which adds a 5px space below textarea elements*/
   resize: vertical;
-  height: 200px;
+  min-height: 200px;
   width: 500px;
   background-color: rgb(155, 190, 190);
   box-sizing: border-box;
+  border: 2px solid black;
+  box-shadow: -5px 0px 10px rgba(0, 0, 0, 0.3), 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
-@media (max-width: 650px) {
-  #editor-wrapper {
-    width: 80%;
+#editor-bar.expand {
+  width: 95vw;
+}
+#editor.expand {
+  width: 95vw;
+  min-height: 95vh; /*min-height is necessary here to prevent drag-resizing(before expansion) overriding a height property*/
+  resize: none;
+}
+@media (max-width: 530px) {
+  #editor-bar {
+    width: 95vw;
   }
   #editor {
-    width: 100%;
+    width: 95vw;
   }
 }
-#preview {
+
+
+/*Previewer*/
+#previewer-wrapper {
+  margin-top: 20px;
+  background-color: yellow;
+}
+#previewer-wrapper.expand {
+  position: absolute;
+  margin-top: 0;
+}
+#previewer-bar {
+  display: flex;
+  justify-content: space-between;
+  height: 20px;
+  width: 800px;
+  background-color: rgb(0, 144, 144);
+  font-weight: bold;
+  box-sizing: border-box;
+  border-top: 2px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  box-shadow: -5px -5px 10px rgba(0, 0, 0, 0.3), 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+#previewer-bar.expand {
+  width: 95vw;
+}
+#previewer-resize {
+  cursor: pointer;
+}
+#previewer-resize:hover {
+  color: white;
+}
+#previewer {
   min-height: 200px;
   width: 800px;
-  margin-top: 25px;
   background-color: rgb(155, 190, 190);
   padding: 10px;
+  box-sizing: border-box;
   border: 2px solid black;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3), -5px -5px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3), -5px 0px 10px rgba(0, 0, 0, 0.3);
 }
-#preview img {
+#previewer.expand {
+  width: 95vw;
+  min-height: 95vh;
+}
+#previewer img {
   max-width: 100%;
   height: auto;
 }
 @media (max-width: 850px) {
-  #preview {
-    width: 90%;
+  #previewer-bar {
+    width: 95vw;
+  }
+  #previewer {
+    width: 95vw;
   }
 }
 
-#preview h1 {
+/*Element styling for previewerer*/
+#previewer h1 {
   border-bottom: 2px solid rgb(38, 70, 70);
 }
-#preview h2 {
+#previewer h2 {
   border-bottom: 1px solid rgb(38, 70, 70);
 }
-code {
+#previewer code {
   background-color: white;
 }
-pre code {
+#previewer pre code {
   display: block;
 }
-table {
+#previewer table {
   border: 1px solid black;
   border-collapse: collapse;
 }
-td {
+#previewer td {
   border: 1px solid black;
 }
-th {
+#previewer th {
   border: 1px solid black;
 }
-blockquote {
+#previewer blockquote {
   padding-left: 5px;
   border-left: 3px solid rgb(34, 61, 61);
   color: rgb(34, 61, 61);

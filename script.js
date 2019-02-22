@@ -1,14 +1,58 @@
 const editor = document.getElementById('editor');
-const preview = document.getElementById('preview');
-
-editor.addEventListener('input', updateText);
+const editorWrapper = document.getElementById('editor-wrapper');
+const editorBar = document.getElementById('editor-bar');
+const editorResize = document.getElementById('editor-resize');
+const previewer = document.getElementById('previewer');
+const previewerWrapper = document.getElementById('previewer-wrapper');
+const previewerBar = document.getElementById('previewer-bar');
+const previewerResize = document.getElementById('previewer-resize');
 
 function updateText() {
   let newText = editor.value;
-  preview.innerHTML = marked(newText, breaks = true);
+  previewer.innerHTML = marked(newText, breaks = true);
 }
 
-window.addEventListener('load', updateText);
+function expandEditor() {
+  editorResize.textContent = 'Contract';
+  editorWrapper.classList.add('expand');
+  editorBar.classList.add('expand');
+  editor.classList.add('expand');
+  editorResize.removeEventListener('click', expandEditor);
+  editorResize.addEventListener('click', contractEditor);
+  previewer.innerHTML = '';
+  editor.removeEventListener('input', updateText);
+}
+
+function contractEditor() {
+  editorResize.textContent = 'Expand';
+  editorWrapper.classList = '';
+  editorBar.classList = '';
+  editor.classList = '';
+  editorResize.addEventListener('click', expandEditor);
+  editor.addEventListener('input', updateText);
+  updateText();
+}
+
+function expandPreviewer() {
+  previewerResize.textContent = 'Contract';
+  previewerWrapper.classList.add('expand');
+  previewerBar.classList.add('expand');
+  previewer.classList.add('expand');
+  previewerResize.removeEventListener('click', expandPreviewer);
+  previewerResize.addEventListener('click', contractPreviewer);
+  //previewer.innerHTML = '';
+}
+
+function contractPreviewer() {
+  previewerResize.textContent = 'Expand';
+  previewerWrapper.classList = '';
+  previewerBar.classList = '';
+  previewer.classList = '';
+  previewerResize.addEventListener('click', expandPreviewer);
+}
+
+window.addEventListener('load', contractEditor);
+window.addEventListener('load', contractPreviewer);
 
 let defaultText = `# Welcome to my React Markdown Previewer!
 
@@ -58,7 +102,5 @@ And here. | Okay. | I think we get it.
 
 editor.value = defaultText;
 
-//REPLICATE TOP BAR, EXPAND/CONTRACT BUTTON, AND DISABLE TEXTAREA RESIZING
 //AND POSSIBLY SOLVE LINEBREAK ISSUE.
 
-//CONTINUE RESEARCHING BOX-SIZING AND WHY MY TEXTAREA IS WIDER AND CAUSING MY WRAPPER DIV TO BE LONGER
