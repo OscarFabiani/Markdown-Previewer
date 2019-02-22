@@ -6,9 +6,6 @@ body {
 }
 
 /*Editor*/
-#editor-wrapper {
-  background-color: yellow;
-}
 #editor-wrapper.expand {
   position: absolute;
 }
@@ -29,7 +26,7 @@ body {
   cursor: pointer;
 }
 #editor-resize:hover {
-  color: white;
+  color: rgb(74, 228, 228);
 }
 #editor {
   display: flex; /*This is a fix for Chrome which adds a 5px space below textarea elements. display: block; would work as well*/
@@ -63,7 +60,6 @@ body {
 /*Previewer*/
 #previewer-wrapper {
   margin-top: 20px;
-  background-color: yellow;
 }
 #previewer-wrapper.expand {
   position: absolute;
@@ -89,7 +85,7 @@ body {
   cursor: pointer;
 }
 #previewer-resize:hover {
-  color: white;
+  color: rgb(74, 228, 228);
 }
 #previewer {
   min-height: 200px;
@@ -117,7 +113,7 @@ body {
   }
 }
 
-/*Element styling for previewerer*/
+/*Element styling for previewer*/
 #previewer h1 {
   border-bottom: 2px solid rgb(38, 70, 70);
 }

@@ -1,3 +1,4 @@
+//Setting variables
 const editor = document.getElementById('editor');
 const editorWrapper = document.getElementById('editor-wrapper');
 const editorBar = document.getElementById('editor-bar');
@@ -7,12 +8,15 @@ const previewerWrapper = document.getElementById('previewer-wrapper');
 const previewerBar = document.getElementById('previewer-bar');
 const previewerResize = document.getElementById('previewer-resize');
 
+
 function updateText() {
+  //This function updates the text within the prewiewer element to reflect the editor element.
   let newText = editor.value;
-  previewer.innerHTML = marked(newText, breaks = true);
+  previewer.innerHTML = marked(newText, {gfm: true, breaks: true});
 }
 
 function expandEditor() {
+  //This function effectively expands the editor element to the viewport's height and width by adding css classes.
   editorResize.textContent = 'Contract';
   editorWrapper.classList.add('expand');
   editorBar.classList.add('expand');
@@ -24,6 +28,7 @@ function expandEditor() {
 }
 
 function contractEditor() {
+  //This function effectively contractes the editor element to it's orginal height and width by removing all css classes.
   editorResize.textContent = 'Expand';
   editorWrapper.classList = '';
   editorBar.classList = '';
@@ -34,16 +39,17 @@ function contractEditor() {
 }
 
 function expandPreviewer() {
+  //This function effectively expands the previewer element to the viewport's height and width by adding css classes.
   previewerResize.textContent = 'Contract';
   previewerWrapper.classList.add('expand');
   previewerBar.classList.add('expand');
   previewer.classList.add('expand');
   previewerResize.removeEventListener('click', expandPreviewer);
   previewerResize.addEventListener('click', contractPreviewer);
-  //previewer.innerHTML = '';
 }
 
 function contractPreviewer() {
+  //This function effectively contractes the editor element to it's orginal height and width by removing all css classes.
   previewerResize.textContent = 'Expand';
   previewerWrapper.classList = '';
   previewerBar.classList = '';
@@ -51,10 +57,12 @@ function contractPreviewer() {
   previewerResize.addEventListener('click', expandPreviewer);
 }
 
+//Setting event listeners and updating text on load
 window.addEventListener('load', contractEditor);
 window.addEventListener('load', contractPreviewer);
 
-let defaultText = `# Welcome to my React Markdown Previewer!
+//Setting default text
+let defaultText = `# Welcome to my Markdown Previewer!
 
 ## This is a sub-heading...
 ### And here's some other cool stuff:
@@ -100,7 +108,6 @@ And here. | Okay. | I think we get it.
 
 ![React Logo w/ Text](https://goo.gl/Umyytc)`
 
+//Populating editor with default text
 editor.value = defaultText;
-
-//AND POSSIBLY SOLVE LINEBREAK ISSUE.
 
